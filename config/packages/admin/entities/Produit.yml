@@ -1,0 +1,20 @@
+easy_admin:
+  entities:
+    Produit:
+        class: App\Entity\Produit
+        form:
+        fields:
+            - {property: 'nom', label: "Titre"}
+            - {property: 'description', label: "Description"}
+            - { property: 'imageFile', type: "file", label: "Ajout d'une image"}
+            - {property: 'categorie', label: "Catégorie"}
+            - {property: 'prix', label: "Prix"}
+        list:
+          actions:
+            - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary'}
+            - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}
+          fields:
+            - { property: 'nom', label: "Titre"}
+            - { property: 'description', label: "Description"}
+            - { property: 'image', type: "image", base_path: "images/produits/"}
+            - { property: 'categorie', label: "Catégorie"}

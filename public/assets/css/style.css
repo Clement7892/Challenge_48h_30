@@ -1,0 +1,125 @@
+
+p, h1, h2, h3, h4, h5, label{
+    color: white;
+}
+
+.card-text, .card-title{
+    color: #212529;
+}
+
+.swiper {
+    width: 100%;
+    margin: 100px;
+    height: 500px;
+    margin-top: 40px;
+}
+
+
+.event_img{
+    width: 100%;
+}
+
+
+.nav-item{
+    display: flex;
+}
+
+.search_bar{
+    margin: 20px 0px;
+}
+
+.search_bar form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.search_form{
+    width: 50%;
+}
+
+.swiper-slide{
+    position: relative;
+}
+
+.swiper-slide a {
+    text-decoration: none;
+}
+
+.slider_content{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    background-color: #ffffffde;
+    color: black;
+}
+
+.slider_content h2{
+    color: black !important;
+    padding: 5px 10px;
+    opacity: 1;
+    margin: 0 !important;
+}
+
+.swiper h2{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.event_content{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.right_content{
+    width: 70%;
+}
+
+.sidebar{
+    width: 30%;
+    padding: 30px;
+}
+
+.content_img img{
+    width: 100%;
+}
+
+.bottom_content{
+    padding: 0px 40px;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.description, .commentaire{
+    margin: 10px 0px;
+}
+
+.description_content{
+    color: white;
+}
+
+.categorie{
+    margin: 20px 0px;
+}
+
+.join_event{
+    margin: 20px 0px;
+}
+
+.divider{
+    border-top: 1px solid black !important;
+    color: black;
+}
+
+.metadata, .content{
+    color: white;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+}

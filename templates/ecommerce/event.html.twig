@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<section class="row article">
+		<article class="col-md-6 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+			<h2>{{ produit.user.username }}</h2>
+            <h3>{{ produit.user }}</h3>
+		</article>
+	</section>
+{% endblock %}

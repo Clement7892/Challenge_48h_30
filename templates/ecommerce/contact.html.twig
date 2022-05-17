@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center">{{ message }}</div>
+{% endfor %}
+
+{{form_start(formContact)}}
+<br>
+<div class="card-header">
+	<h3>Contact</h3>
+</div>
+<br>
+{{form_row(formContact.prenom,{
+    label: "Prénom"
+})}}
+{{form_row(formContact.nom,{
+    label: "Nom"
+})}}
+{{form_row(formContact.email)}}
+{{form_row(formContact.contenu)}}
+
+<div class="form-group">
+	<input type="submit" value="Envoyer" class="btn btn-lg btn-primary">
+</div>
+{{form_end(formContact)}}
+
+{% endblock %}

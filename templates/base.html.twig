@@ -1,19 +1,129 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Acceuil{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+			<script src="{{asset('assets/js/script.js')}}"></script>
+
+			<link
+			rel="stylesheet"
+			href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+			/>
+		{% endblock %}
+
+	</head>
+	<body>
+
+	<div
+	class="bg-image"
+	style="
+		background-image: url('https://i.pinimg.com/originals/e9/79/27/e9792750cbbe7787015d1f759f7c743c.jpg');
+		background-size: cover;
+		background-repeat: repeat;
+		min-height: 100vh;">
+		<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  			<a class="navbar-brand" href="{{path('home_ecommerce')}}">Acceuil</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+  			</button>
+
+  			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    			<ul class="navbar-nav mr-auto">
+      				<li class="nav-item active">
+        				<a class="nav-link" href="{{path('home_ecommerce')}}">
+          					<i class="fa fa-home"></i>
+          					Evenement
+         				</a>
+      				</li>
+      				<li class="nav-item">
+					  	{% if is_granted('ROLE_ORGA') or is_granted('ROLE_ADMIN')%}
+                			<a class="nav-link" href="{{ path('create_produit') }} ">
+								<i class="fa fa-plus"></i>
+          							Créer un Evenement
+							</a>
+                		{% endif %}
+      				</li>
+      				<li class="nav-item active">
+						<a class="nav-link" href="{{path('contact_ecommerce')}}">
+							<i class="fa fa-address-book"></i>
+							Contact
+						</a>
+					</li>
+    			</ul>
+    			<form class="d-flex">
+					{% if is_granted('ROLE_ADMIN') %}
+						<a class="nav-link" href="{{ path('easyadmin') }}">BackOffice</a>
+					{% endif %}
+					{% if is_granted('ROLE_USER') %}
+						<a href="{{ path('profil_ecommerce') }}" class="nav-link active">
+							<i class="fa fa-user"></i>
+							Profil
+						</a>
+						<a href="{{ path('app_logout') }}" class="nav-link active">
+							Deconnexion
+						</a>
+					{% else %}
+						<a href="{{ path('app_login') }}" class="nav-link active">Connexion</a>
+						<a href="{{ path('app_register') }}" class="nav-link active">Inscription</a>
+					{% endif %}
+				</form>
+  			</div>
+		</nav>
+
+		<div class="container">
+			{% block body %}
+			{% endblock %}
+		</div>
+	</div>
+	</body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script>
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
+
+console.log("test");
+</script>
+</body></html>

@@ -1,0 +1,17 @@
+easy_admin:
+    site_name: "<b>BackOffice</b>"
+    design:
+        brand_color: blue
+        menu:
+            - label: 'Site'
+              icon: 'newspaper-o'
+              children:
+                - {entity: "Produit", icon: "folder-open", label: "Evenements "}
+                - {entity: "Categorie", icon: "folder-open", label: "Catégories"}
+                - {entity: "Commentaire", icon: "folder-open", label: "Chat"}
+            - label: 'Accès'
+              icon: user
+              children:
+                - {entity: "User", icon: "folder-open", label: "Utilisateurs"}
+imports:
+    - { resource: admin/}

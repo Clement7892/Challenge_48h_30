@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<div class="card-header">
+	<h3>Profil</h3>
+</div>
+<br>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<section class="profil">
+	<h2>{{ app.user.username }}</h2>
+	<h5>{{ app.user.email }}</h5>
+	<br>
+	{% for produit in app.user.produits %}
+		<section class="row article">
+			<article class="col-md-6 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+				<h2>{{ produit.nom }}</h2>
+				<div class="metadata">
+					Catégorie : 
+					{{produit.categorie.titre}}
+				</div>
+				<div class="content">
+					<img src="{{ asset('images/produits/' ~ produit.image) }}" alt="" class="img-fluid">
+					<br>
+					{{ produit.description}}
+					<br>
+    	            <a class="btn btn-primary" href="{{ path('edit_produit', {'id': produit.id}) }}"><i class="fa fa-pencil"></i></a>
+	                <a class="btn btn-primary" href="{{ path('show_produit', {'id': produit.id}) }}"><i class="fa fa-eye"></i></a>
+					<a class="btn btn-primary" href="{{ path('delete_produit', {'id': produit.id})}}"><i class="fa fa-trash"></i></a>
+
+				</div>
+			</article>
+		{% endfor %}
+	</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <br>
+    <div class="card-header">
+	    <h3>
+            {% if editMode %}
+                Modification d'un evenement
+            {% else %}
+                Création d'un evenement
+            {% endif %}
+        </h3>
+    </div>
+    <br>
+    {{form_start(formProduit)}}
+
+    {{form_row(formProduit.nom, {
+        'label': "Nom",
+        'attr': {
+            'placeholder': "Nom de l'evenement",
+            }
+    })}}
+
+    {{form_row(formProduit.description,{
+        'label': "Description",
+        'attr': {
+            'placeholder': "Description de l'evenement",
+        }
+    })}}
+    {{form_row(formProduit.prix)}}
+    {{form_row(formProduit.capacite)}}
+
+    {{form_row(formProduit.imageFile)}}
+
+    {{form_row(formProduit.categorie,{
+        label: "Categorie"
+    }) }}
+
+    <button type="submit" class="btn btn-primary">
+        {% if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter l'evenement
+        {% endif %}
+    </button>
+
+    {{form_end(formProduit)}}
+
+{% endblock %}
